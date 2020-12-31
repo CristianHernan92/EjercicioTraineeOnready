@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+
+		//clase vehículo
+		class vehículo{
+			
+			constructor(Marca,Modelo,Puertas,Precio){
+				this.Marca=Marca
+				this.Modelo=Modelo
+				this.Puertas=Puertas
+				this.Precio=Precio
+			}
+
+			imprimir(){
+				function agregado(precio){
+					if(precio.toLocaleString('us').lastIndexOf(',')===-1)
+						return ",00"					
+					else if(precio.toLocaleString('us').length-precio.toLocaleString('us').lastIndexOf(',')===2)
+						return	"0"					
+				}
+				console.log('Marca: '+this.Marca+' // '+'Modelo: '+this.Modelo+' // '+'Puertas: '+this.Puertas+' // '+'Precio: '+'$'+(this.Precio).toLocaleString('us')+agregado(this.Precio))
+				
+			}
+
+		}
+
+		//clase motocicleta
+		class motocicleta{
+			
+			constructor(Marca,Modelo,Cilindrada,Precio){
+				this.Marca=Marca
+				this.Modelo=Modelo
+				this.Cilindrada=Cilindrada
+				this.Precio=Precio
+			}
+
+			imprimir(){
+				function agregado(precio){
+					if(precio.toLocaleString('us').lastIndexOf(',')===-1)
+						return ",00"					
+					else if(precio.toLocaleString('us').length-precio.toLocaleString('us').lastIndexOf(',')===2)
+						return	"0"					
+				}
+				console.log('Marca: '+this.Marca+' // '+'Modelo: '+this.Modelo+' // '+'Cilindrada: '+this.Cilindrada+' // '+'Precio: '+'$'+(this.Precio).toLocaleString('us')+agregado(this.Precio))		
+			}
+
+		}		
+
+		//imprimir
+		function imprimir(){
+
+			let vehículos = [new vehículo('Peugeot',206,4,200000.00),new motocicleta('Honda','Titan','125cc',60000.00),new vehículo('Peugeot',208,5,250000.00),new motocicleta('Yamaha','YBR','160cc',80500.50)]
+
+			vehículos[0].imprimir()
+			vehículos[1].imprimir()
+			vehículos[2].imprimir()
+			vehículos[3].imprimir()
+			console.log('=============================')
+
+
+			function vehículomáscaro(vehículos){
+				let mayor=-1				
+				let j
+				for (var i=0; i != vehículos.length; i++) {
+					if(vehículos[i].Precio>mayor){
+						mayor=vehículos[i].Precio
+						j=i
+					}
+				}
+				return j
+			}
+
+			function vehículomásbarato(vehículos){
+				let menor= 9999999				
+				let j
+				for (var i=0; i != vehículos.length; i++) {
+					if(vehículos[i].Precio<menor){
+						menor=vehículos[i].Precio
+						j=i
+					}
+				}
+				return j
+			}
+
+			console.log("Vehículo más caro: "+vehículos[vehículomáscaro(vehículos)].Marca+" "+vehículos[vehículomáscaro(vehículos)].Modelo)
+			console.log("Vehículo más barato: "+vehículos[vehículomásbarato(vehículos)].Marca+" "+vehículos[vehículomásbarato(vehículos)].Modelo)
+			
+			function vehículoquecontienetalletra(vehículos,letra){		
+				for (var i=0; i != vehículos.length; i++) {
+					if(vehículos[i].Modelo.toString().includes(letra))
+						return i
+				}
+			}
+
+			function agregado(precio){
+				if(precio.toLocaleString('us').lastIndexOf(',')===-1)
+					return ",00"					
+				else if(precio.toLocaleString('us').length-precio.toLocaleString('us').lastIndexOf(',')===2)
+					return	"0"					
+			}
+
+			console.log("Vehículo que contiene en el modelo la letra ‘Y’: "+vehículos[vehículoquecontienetalletra(vehículos,'Y')].Marca+" "+vehículos[vehículoquecontienetalletra(vehículos,'Y')].Modelo+" "+'$'+vehículos[vehículoquecontienetalletra(vehículos,'Y')].Precio.toLocaleString('us')+agregado(vehículos[vehículoquecontienetalletra(vehículos,'Y')].Precio))
+			console.log('=============================')
+			console.log('Vehículos ordenados por precio de mayor a menor:')
+
+			function imprimirdemayoramenor(vehículos){
+				let arr=[]
+				let mayor
+				let vehículo
+				for (var i=0; i != vehículos.length; i++) {
+					mayor=-1
+					for (var j=0; j != vehículos.length; j++) {
+						if((arr.indexOf(vehículos[j])===-1)&&(vehículos[j].Precio>mayor)){
+							vehículo=vehículos[j]
+							mayor=vehículos[j].Precio
+						}
+					}
+					console.log(vehículo.Marca+" "+vehículo.Modelo)
+					arr.push(vehículo)	
+				}
+			}
+
+			imprimirdemayoramenor(vehículos)
+
+		}
+
+		//ejecución
+		imprimir()
+
+
+/*
+		Peugeot 208
+		Peugeot 206
+		Yamaha YBR
+		Honda Titan
+
+		*/
+
+		/*
+
+			https://github.com/CristianHernan92/EjercicioTraineeOnready.git
+
+		 solución debe cumplir con los siguientes requisitos:
+
+			//La salida es por consola y exactamente como se requiere.
+
+
+			
+
+			Diseñar una solución orientada a objetos y subir al repositorio un diagrama de clases junto con el código.
+
+
+
+	
+			Cargar la lista de autos en un único método. No hay ingreso por pantalla de ningún tipo.
+		
+
+			El algoritmo usado para la impresión no tiene que depender de la cantidad, modelo o tipo de vehículo.
+
+
+		*/
+
+</script>
+</html>
