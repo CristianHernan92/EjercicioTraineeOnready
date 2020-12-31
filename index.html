@@ -53,17 +53,27 @@
 
 		}		
 
-		//imprimir
+		//función imprimir
 		function imprimir(){
+
+
+			//----------------------------------------------------------------------------------------------------
+
+
+			//llenamos de en un arreglo los vehículos
 
 			let vehículos = [new vehículo('Peugeot',206,4,200000.00),new motocicleta('Honda','Titan','125cc',60000.00),new vehículo('Peugeot',208,5,250000.00),new motocicleta('Yamaha','YBR','160cc',80500.50)]
 
-			vehículos[0].imprimir()
-			vehículos[1].imprimir()
-			vehículos[2].imprimir()
-			vehículos[3].imprimir()
-			console.log('=============================')
 
+			//----------------------------------------------------------------------------------------------------
+
+
+			//funciones
+
+			function imprimirtodos(vehículos){
+				for (var i = 0; i != vehículos.length; i++) 
+					vehículos[i].imprimir()
+			}
 
 			function vehículomáscaro(vehículos){
 				let mayor=-1				
@@ -89,9 +99,6 @@
 				return j
 			}
 
-			console.log("Vehículo más caro: "+vehículos[vehículomáscaro(vehículos)].Marca+" "+vehículos[vehículomáscaro(vehículos)].Modelo)
-			console.log("Vehículo más barato: "+vehículos[vehículomásbarato(vehículos)].Marca+" "+vehículos[vehículomásbarato(vehículos)].Modelo)
-			
 			function vehículoquecontienetalletra(vehículos,letra){		
 				for (var i=0; i != vehículos.length; i++) {
 					if(vehículos[i].Modelo.toString().includes(letra))
@@ -105,10 +112,6 @@
 				else if(precio.toLocaleString('us').length-precio.toLocaleString('us').lastIndexOf(',')===2)
 					return	"0"					
 			}
-
-			console.log("Vehículo que contiene en el modelo la letra ‘Y’: "+vehículos[vehículoquecontienetalletra(vehículos,'Y')].Marca+" "+vehículos[vehículoquecontienetalletra(vehículos,'Y')].Modelo+" "+'$'+vehículos[vehículoquecontienetalletra(vehículos,'Y')].Precio.toLocaleString('us')+agregado(vehículos[vehículoquecontienetalletra(vehículos,'Y')].Precio))
-			console.log('=============================')
-			console.log('Vehículos ordenados por precio de mayor a menor:')
 
 			function imprimirdemayoramenor(vehículos){
 				let arr=[]
@@ -127,45 +130,30 @@
 				}
 			}
 
+
+			//----------------------------------------------------------------------------------------------------
+
+
+			//imprimimos
+
+			imprimirtodos(vehículos)
+
+			console.log('=============================')
+
+			console.log("Vehículo más caro: "+vehículos[vehículomáscaro(vehículos)].Marca+" "+vehículos[vehículomáscaro(vehículos)].Modelo)
+			console.log("Vehículo más barato: "+vehículos[vehículomásbarato(vehículos)].Marca+" "+vehículos[vehículomásbarato(vehículos)].Modelo)
+
+			console.log("Vehículo que contiene en el modelo la letra ‘Y’: "+vehículos[vehículoquecontienetalletra(vehículos,'Y')].Marca+" "+vehículos[vehículoquecontienetalletra(vehículos,'Y')].Modelo+" "+'$'+vehículos[vehículoquecontienetalletra(vehículos,'Y')].Precio.toLocaleString('us')+agregado(vehículos[vehículoquecontienetalletra(vehículos,'Y')].Precio))
+
+			console.log('=============================')
+
+			console.log('Vehículos ordenados por precio de mayor a menor:')
+
 			imprimirdemayoramenor(vehículos)
 
 		}
 
-		//ejecución
+		//ejecutamos
 		imprimir()
-
-
-/*
-		Peugeot 208
-		Peugeot 206
-		Yamaha YBR
-		Honda Titan
-
-		*/
-
-		/*
-
-			https://github.com/CristianHernan92/EjercicioTraineeOnready.git
-
-		 solución debe cumplir con los siguientes requisitos:
-
-			//La salida es por consola y exactamente como se requiere.
-
-
-			
-
-			Diseñar una solución orientada a objetos y subir al repositorio un diagrama de clases junto con el código.
-
-
-
-	
-			Cargar la lista de autos en un único método. No hay ingreso por pantalla de ningún tipo.
-		
-
-			El algoritmo usado para la impresión no tiene que depender de la cantidad, modelo o tipo de vehículo.
-
-
-		*/
-
 </script>
 </html>
